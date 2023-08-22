@@ -6,7 +6,7 @@ package pos.layerd.view;
 
 /**
  *
- * @author anjanathrishakya
+ * @author yasiru
  */
 public class LayoutView extends javax.swing.JFrame {
 
@@ -30,12 +30,15 @@ public class LayoutView extends javax.swing.JFrame {
         headerLabel = new javax.swing.JLabel();
         sideNavPanel = new javax.swing.JPanel();
         manageCustomnerButton = new javax.swing.JButton();
+        manageItemButton = new javax.swing.JButton();
+        orderButton = new javax.swing.JButton();
         bodyPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        headerPanel.setBackground(new java.awt.Color(102, 102, 255));
+        headerPanel.setBackground(new java.awt.Color(204, 0, 204));
 
+        headerLabel.setBackground(new java.awt.Color(204, 0, 204));
         headerLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         headerLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         headerLabel.setText("Super Market");
@@ -57,14 +60,34 @@ public class LayoutView extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        sideNavPanel.setBackground(new java.awt.Color(204, 204, 255));
+        sideNavPanel.setBackground(new java.awt.Color(204, 126, 238));
 
-        manageCustomnerButton.setBackground(new java.awt.Color(102, 102, 255));
+        manageCustomnerButton.setBackground(new java.awt.Color(204, 0, 204));
         manageCustomnerButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         manageCustomnerButton.setText("Manage Customer");
         manageCustomnerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageCustomnerButtonActionPerformed(evt);
+            }
+        });
+
+        manageItemButton.setBackground(new java.awt.Color(204, 0, 204));
+        manageItemButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        manageItemButton.setText("Manage Item");
+        manageItemButton.setActionCommand("Manage Item\n");
+        manageItemButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageItemButtonActionPerformed(evt);
+            }
+        });
+
+        orderButton.setBackground(new java.awt.Color(204, 0, 204));
+        orderButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        orderButton.setText("Order");
+        orderButton.setActionCommand("Manage Item\n");
+        orderButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderButtonActionPerformed(evt);
             }
         });
 
@@ -74,7 +97,10 @@ public class LayoutView extends javax.swing.JFrame {
             sideNavPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sideNavPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(manageCustomnerButton, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                .addGroup(sideNavPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(manageCustomnerButton, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                    .addComponent(manageItemButton, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                    .addComponent(orderButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
                 .addContainerGap())
         );
         sideNavPanelLayout.setVerticalGroup(
@@ -82,7 +108,11 @@ public class LayoutView extends javax.swing.JFrame {
             .addGroup(sideNavPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(manageCustomnerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(359, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(manageItemButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(orderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(300, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout bodyPanelLayout = new javax.swing.GroupLayout(bodyPanel);
@@ -122,6 +152,14 @@ public class LayoutView extends javax.swing.JFrame {
     private void manageCustomnerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageCustomnerButtonActionPerformed
         loadCustomerPanel();
     }//GEN-LAST:event_manageCustomnerButtonActionPerformed
+
+    private void manageItemButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageItemButtonActionPerformed
+        loadItemPanel();
+    }//GEN-LAST:event_manageItemButtonActionPerformed
+
+    private void orderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderButtonActionPerformed
+        loadOrderPanel();
+    }//GEN-LAST:event_orderButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,6 +201,8 @@ public class LayoutView extends javax.swing.JFrame {
     private javax.swing.JLabel headerLabel;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JButton manageCustomnerButton;
+    private javax.swing.JButton manageItemButton;
+    private javax.swing.JButton orderButton;
     private javax.swing.JPanel sideNavPanel;
     // End of variables declaration//GEN-END:variables
 
@@ -171,6 +211,24 @@ public class LayoutView extends javax.swing.JFrame {
         CustomerPanel customerPanel = new CustomerPanel();
         customerPanel.setSize(bodyPanel.getWidth(), bodyPanel.getHeight());
         bodyPanel.add(customerPanel);
+        bodyPanel.repaint();
+        bodyPanel.revalidate();
+    }
+
+    private void loadItemPanel() {
+        bodyPanel.removeAll();
+        ItemPanel itemPanel = new ItemPanel();
+        itemPanel.setSize(bodyPanel.getWidth(), bodyPanel.getHeight());
+        bodyPanel.add(itemPanel);
+        bodyPanel.repaint();
+        bodyPanel.revalidate();
+    }
+
+    private void loadOrderPanel() {
+        bodyPanel.removeAll();
+        OrderPanel orderPanel = new OrderPanel();
+        orderPanel.setSize(bodyPanel.getWidth(), bodyPanel.getHeight());
+        bodyPanel.add(orderPanel);
         bodyPanel.repaint();
         bodyPanel.revalidate();
     }

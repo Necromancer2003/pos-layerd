@@ -5,10 +5,12 @@
 package pos.layerd.service;
 
 import pos.layerd.service.custom.impl.CustomerServiceImpl;
+import pos.layerd.service.custom.impl.ItemServiceImpl;
+import pos.layerd.service.custom.impl.OrderServiceImpl;
 
 /**
  *
- * @author anjanathrishakya
+ * @author yasiru
  */
 public class ServiceFactory {
     
@@ -28,12 +30,16 @@ public class ServiceFactory {
         switch (type) {
             case CUSTOMER:
                 return new CustomerServiceImpl();
+            case ITEM:
+                return new ItemServiceImpl();
+            case ORDER:
+                return new OrderServiceImpl();
             default:
                 return null;
         }
     }
     
     public enum ServiceType{
-        CUSTOMER
+        CUSTOMER, ITEM, ORDER
     }
 }

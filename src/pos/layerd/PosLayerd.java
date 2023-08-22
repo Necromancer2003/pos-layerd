@@ -8,7 +8,7 @@ import pos.layerd.view.LayoutView;
 
 /**
  *
- * @author anjanathrishakya
+ * @author yasiru
  */
 public class PosLayerd {
 
